@@ -9,3 +9,11 @@ CREATE INDEX idx_booking_user_id ON Booking(user_id);
 CREATE INDEX idx_booking_property_id ON Booking(property_id);
 CREATE INDEX idx_booking_dates ON Booking(start_date, end_date);
 CREATE INDEX idx_booking_status ON Booking(status);
+
+SELECT *
+FROM Booking b
+JOIN Property p ON b.property_id = p.id
+WHERE p.city = 'San Francisco'
+  AND b.start_date >= '2025-08-01'
+ORDER BY b.start_date
+LIMIT 20;
