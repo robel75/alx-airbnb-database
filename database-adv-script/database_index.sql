@@ -10,6 +10,7 @@ CREATE INDEX idx_booking_property_id ON Booking(property_id);
 CREATE INDEX idx_booking_dates ON Booking(start_date, end_date);
 CREATE INDEX idx_booking_status ON Booking(status);
 
+EXPLAIN ANALYZE
 SELECT *
 FROM Booking b
 JOIN Property p ON b.property_id = p.id
