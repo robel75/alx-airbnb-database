@@ -19,3 +19,4 @@ FROM Booking b
 JOIN "User" u ON b.user_id = u.id
 JOIN Property p ON b.property_id = p.id
 LEFT JOIN Payment pay ON pay.booking_id = b.id;
+WHERE b.status IS NOT FULL;
