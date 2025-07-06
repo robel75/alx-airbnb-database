@@ -8,3 +8,9 @@ SELECT properties.id, properties.name, COUNT(bookings.id) AS booking_count,
 FROM properties
 LEFT JOIN bookings ON properties.id = bookings.property_id
 GROUP BY properties.id, properties.name;
+
+SELECT properties.id, properties.name, COUNT(bookings.id) AS booking_count,
+       ROW_NUMBER() OVER (ORDER BY COUNT(bookings.id) DESC) AS booking_position
+FROM properties
+LEFT JOIN bookings ON properties.id = bookings.property_id
+GROUP BY properties.id, properties.name;
