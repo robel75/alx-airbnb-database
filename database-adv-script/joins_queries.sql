@@ -11,6 +11,8 @@ FROM
     bookings
 INNER JOIN users ON bookings.user_id = users.id;
 
+ORDER BY  bookings.start_date;
+
 SELECT
     properties.id AS property_id,
     properties.name AS property_name,
@@ -32,7 +34,7 @@ SELECT
     bookings.end_date
 FROM
     users
-LEFT JOIN bookings ON users.id = bookings.user_id
+FULL OUTER JOIN bookings ON users.id = bookings.user_id
 
 UNION
 
