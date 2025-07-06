@@ -1,4 +1,4 @@
-
+EXPLAIN
 SELECT 
     b.id AS booking_id,
     b.start_date,
