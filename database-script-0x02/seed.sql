@@ -1,10 +1,25 @@
--- Users
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, role)
-VALUES
-  (UUID(), 'Alice', 'Johnson', 'alice@example.com', 'hashed_pw_1', 'guest'),
-  (UUID(), 'Bob', 'Smith', 'bob@example.com', 'hashed_pw_2', 'host');
+USE AIRBNB;
 
--- Properties
-INSERT INTO Property (property_id, host_id, name, description, location, pricepernight)
-VALUES
-  (UUID(), 'host-user-id-1', 'Cozy Cottage', 'A lovely 2-bedroom home', 'Paris', 120.00);
+INSERT INTO USER(FIRST_NAME, LAST_NAME, EMAIL, PASSWORD_HASH, PHONE_NUMBER,ROLE)
+VALUES("Abebe",'Haile','AH@example.COM', '2222', '09119999999','GUEST'),
+("Bob","Smith",'bobsmithy@example.com','1111','091234567','HOST');
+
+SELECT USER_ID, FIRST_NAME, ROLE 
+FROM USER;
+
+INSERT INTO PROPERTY(HOST_ID,NAME, DESCRIPTION, LOCATION, PRICEPERNIGHT)
+VALUES('393e5d24-63d3-11f0-92e8-088fc3405ea2','NEW HOUSE','NICE HOUSE IN THE WOODS','NEW YORK',150.00);
+
+SELECT PROPERTY_ID, NAME
+FROM PROPERTY;
+
+INSERT INTO BOOKING(PROPERTY_ID,USER_ID,START_DATE,END_DATE,TOTAL_PRICE,STATUS)
+VALUES('e40da66a-63d3-11f0-92e8-088fc3405ea2','393e4e41-63d3-11f0-92e8-088fc3405ea2','2025-08-01','2025-08-03',300,'CONFIRMED');
+
+SELECT BOOKING_ID FROM BOOKING;
+
+INSERT INTO PAYMENT(BOOKING_ID, AMOUNT,PAYMENT_METHOD)
+VALUES('d93abd55-63d4-11f0-92e8-088fc3405ea2', 300, 'CREDIT_CARD');
+
+INSERT INTO REVIEW(PROPERTY_ID, USER_ID,RATING, COMMENT)
+VALUES('e40da66a-63d3-11f0-92e8-088fc3405ea2','393e4e41-63d3-11f0-92e8-088fc3405ea2', 5, "LOVED IT");
