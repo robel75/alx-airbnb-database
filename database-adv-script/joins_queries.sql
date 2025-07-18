@@ -1,51 +1,17 @@
-SELECT
-    bookings.id AS booking_id,
-    bookings.property_id,
-    bookings.user_id,
-    bookings.start_date,
-    bookings.end_date,
-    users.first_name,
-    users.last_name,
-    users.email
-FROM
-    bookings
-INNER JOIN users ON bookings.user_id = users.id;
+USE AIRBNB;
+SELECT BOOKING.BOOKING_ID, USER.USER_ID, USER.FIRST_NAME, USER.LAST_NAME FROM BOOKING
+INNER JOIN USER
+ON BOOKING.USER_ID = USER.USER_ID;
 
-ORDER BY  bookings.start_date;
+SELECT PROPERTY.PROPERTY_ID, PROPERTY.NAME, REVIEW.REVIEW_ID, REVIEW.COMMENT FROM PROPERTY
+LEFT JOIN REVIEW 
+ON PROPERTY.PROPERTY_ID = REVIEW.PROPERTY_ID;
 
-SELECT
-    properties.id AS property_id,
-    properties.name AS property_name,
-    properties.location,
-    reviews.id AS review_id,
-    reviews.rating,
-    reviews.comment
-FROM
-    properties
-LEFT JOIN reviews ON properties.id = reviews.property_id;
-
-SELECT
-    users.id AS user_id,
-    users.first_name,
-    users.last_name,
-    bookings.id AS booking_id,
-    bookings.property_id,
-    bookings.start_date,
-    bookings.end_date
-FROM
-    users
-FULL OUTER JOIN bookings ON users.id = bookings.user_id
-
+SELECT * FROM USER
+LEFT JOIN BOOKING
+ON USER.USER_ID = BOOKING.USER_ID
 UNION
+SELECT * FROM USER
+RIGHT JOIN BOOKING 
+ON USER.USER_ID= BOOKING.USER_ID
 
-SELECT
-    users.id AS user_id,
-    users.first_name,
-    users.last_name,
-    bookings.id AS booking_id,
-    bookings.property_id,
-    bookings.start_date,
-    bookings.end_date
-FROM
-    bookings
-RIGHT JOIN users ON bookings.user_id = users.id;
