@@ -9,7 +9,7 @@ This directory contains the SQL schema definition for the Airbnb database projec
 ## Technologies
 
 - SQL
-- PostgreSQL-compatible syntax
+- MySQL-compatible syntax
 
 ## Tables
 
