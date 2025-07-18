@@ -1,4 +1,8 @@
-SELECT properties.id,properties.name,properties.location
-FROM properties WHERE(SELECT AVG(rating) FROM reviews WHERE reviews.property_id= properties.id)>4.0;
+USE AIRBNB;
+SELECT PROPERTY.NAME, PROPERTY.PROPERTY_ID FROM PROPERTY
+WHERE (SELECT AVG(RATING) FROM REVIEW WHERE REVIEW.PROPERTY_ID = PROPERTY.PROPERTY_ID)>4.0;
 
-SELECT id,first_name,last_name, email FROM users WHERE (SELECT COUNT(*) FROM bookings WHERE bookings.user_id= user.id)>3;
+SELECT USER_ID, FIRST_NAME, LAST_NAME FROM USER
+WHERE (SELECT COUNT(*) FROM BOOKING WHERE BOOKING.USER_ID=USER.USER_ID)>3;
+
+
