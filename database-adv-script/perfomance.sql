@@ -1,22 +1,13 @@
-EXPLAIN
 SELECT 
-    b.id AS booking_id,
-    b.start_date,
-    b.end_date,
-    b.status,
-    u.id AS user_id,
-    u.name AS user_name,
-    u.email AS user_email,
-    p.id AS property_id,
-    p.title AS property_title,
-    p.city,
-    p.price_per_night,
-    pay.id AS payment_id,
-    pay.amount,
-    pay.payment_date,
-    pay.status AS payment_status
-FROM Booking b
-JOIN "User" u ON b.user_id = u.id
-JOIN Property p ON b.property_id = p.id
-LEFT JOIN Payment pay ON pay.booking_id = b.id;
-WHERE b.status IS NOT FULL AND u.email IS NOT NULL;
+BOOKING.BOOKING_ID,
+USER.USER_ID,
+USER.FIRST_NAME,
+USER.LAST_NAME,
+PROPERTY.PROPERTY_ID,
+PROPERTY.HOST_ID,
+PAYMENT.PAYMENT_ID
+FROM BOOKING
+JOIN USER ON BOOKING.USER_ID=USER.USER_ID
+JOIN PROPERTY ON BOOKING.USER_ID=PROPERTY.PROPERTY_ID
+LEFT JOIN PAYMENT ON PAYMENT.BOOKING_ID = BOOKING.BOOKING_ID
+WHERE BOOKING.STATUS IS NOT NULL AND USER.EMAIL IS NOT NULL
