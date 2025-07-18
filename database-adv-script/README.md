@@ -36,20 +36,17 @@ Query:
 Find all properties where the average rating is greater than 4.0.
 
 sql
-SELECT properties.id, properties.name, properties.location
-FROM properties
-WHERE (
-    SELECT AVG(rating)
-    FROM reviews
-    WHERE reviews.property_id = properties.id
-) > 4.0;
-SELECT id, first_name, last_name, email
-FROM users
-WHERE (
-    SELECT COUNT(*)
-    FROM bookings
-    WHERE bookings.user_id = users.id
-) > 3;
+SELECT PROPERTY.NAME, PROPERTY.PROPERTY_ID FROM PROPERTY
+WHERE (SELECT AVG(RATING) FROM REVIEW WHERE REVIEW.PROPERTY_ID = PROPERTY.PROPERTY_ID)>4.0;
+
+### 2. correlated subquery
+
+Query:
+Find users who have made more than 3 bookings.
+
+sql
+SELECT USER_ID, FIRST_NAME, LAST_NAME FROM USER
+WHERE (SELECT COUNT(*) FROM BOOKING WHERE BOOKING.USER_ID=USER.USER_ID)>3;
 
 ____________________________________________
 
